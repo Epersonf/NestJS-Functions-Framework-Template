@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && npx cpy ./package.json dist && npx cpy .gcloudignore dist",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:local": "npm run build && npx @google-cloud/functions-framework --source=dist/ --target=main --debug",
     "deploy:dev": "npm run build && npx ff-deployer deploy --stage=dev",
@@ -24,6 +24,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "cpy-cli": "^4.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
