@@ -12,7 +12,8 @@
       "runtimeArgs": [
         "run",
         "start:local"
-      ]
+      ],
+      "console": "integratedTerminal"
     }
   ]
 }
