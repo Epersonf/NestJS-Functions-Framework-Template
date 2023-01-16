@@ -1,10 +1,12 @@
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 import {
   ExpressAdapter,
   NestExpressApplication,
-} from "@nestjs/platform-express";
-import express, { Express } from "express";
+} from '@nestjs/platform-express';
+import express, { Express } from 'express';
+import sourceMapSupport from 'source-map-support';
+sourceMapSupport.install();
 
 const server: Express = express();
 
@@ -19,7 +21,7 @@ async function createNestServer(expressInstance: Express) {
 }
 
 createNestServer(server)
-  .then(() => console.log("Nest Ready"))
-  .catch((err) => console.error("Nest broken", err));
+  .then(() => console.log('Nest Ready'))
+  .catch((err) => console.error('Nest broken', err));
 
 export { server as main };
