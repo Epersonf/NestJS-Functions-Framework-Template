@@ -20,8 +20,11 @@ async function createNestServer(expressInstance: Express) {
   return app.init();
 }
 
-createNestServer(server)
-  .then(() => console.log('Nest Ready'))
-  .catch((err) => console.error('Nest broken', err));
+const serverStartPromise = createNestServer(server);
+
+server.use(async (_req, _res, next) => {
+  await serverStartPromise;
+  next();
+});
 
 export { server as main };
